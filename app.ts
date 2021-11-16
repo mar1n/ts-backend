@@ -1,20 +1,12 @@
 import express from "express";
-import config from "config";
-import log from "./src/logger";
-import connect from "./src/db/connect";
 import routes from "./src/routes";
-
-const port = config.get("port") as number;
-const host = config.get("host") as string;
+import { Express, Request, Response } from "express";
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+//app.get('/user', async (req: Request, res: Response) => res.send({data: "name"}));
+routes(app);
 
-app.listen(port, host, () => {
-    log.info(`Server listing at http://${host}:${port}`);
-
-    connect();
-    routes(app);
-});
+export default app;
