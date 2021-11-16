@@ -18,3 +18,11 @@ describe("check server is alive", () => {
     expect(response.body.data).toEqual("Szymon");
   });
 });
+
+describe("authentication", () => {
+  test("signUp", async () => {
+    const response = await request(app).get("/api/signup");
+    expect(response.status).toEqual(200);
+    expect(response.body.data).toEqual('you hit signup endpoint');
+  })
+})
