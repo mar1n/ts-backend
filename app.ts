@@ -2,8 +2,6 @@ import express from "express";
 import morgan from "morgan";
 import auth from "./src/routes/auth";
 import cors from "cors";
-import mongoose from "mongoose";
-import bodyParser from "body-parser";
 require('dotenv').config();
 
 const app = express();

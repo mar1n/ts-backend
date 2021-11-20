@@ -21,7 +21,7 @@ describe("check server is alive", () => {
 
 describe("authentication", () => {
   test("signUp", async () => {
-    const response = await request(app).get("/api/signup");
+    const response = await request(app).post("/api/signup");
     expect(response.status).toEqual(200);
     expect(response.body.data).toEqual('you hit signup endpoint');
   })
