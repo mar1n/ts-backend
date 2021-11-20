@@ -25,4 +25,12 @@ describe("authentication", () => {
     expect(response.status).toEqual(200);
     expect(response.body.data).toEqual('you hit signup endpoint');
   })
+  test("check express-validator, Is not empty", async () => {
+    const response = await request(app).post("/api/signup").send({name: "Szymon", email: "cykcykacz@gmail.com", password:"1234567"});
+    expect(response.status).toEqual(200);
+  })
+  test("check express-validator, One field is empty", async () => {
+    const response = await request(app).post("/api/signup").send({name: "", email: "cykcykacz@gmail.com", password:"1234567"});
+    expect(response.status).toEqual(422);
+  })
 })
